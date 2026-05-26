@@ -544,13 +544,14 @@ a {
 
 .logo-wall {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 18px;
   margin-top: 48px;
 }
 
 .brand-logo {
-  min-height: 180px;
+  min-width: 0;
+  min-height: 172px;
   display: grid;
   place-items: center;
   align-content: center;
@@ -581,11 +582,12 @@ a {
 
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
 }
 
 .product-card {
+  min-width: 0;
   padding: 18px 18px 30px;
 }
 
@@ -595,16 +597,20 @@ a {
 }
 
 .product-visual {
-  aspect-ratio: 16 / 10;
+  width: 100%;
+  height: clamp(178px, 17vw, 220px);
+  max-height: 220px;
   overflow: hidden;
   border-radius: 18px;
   background-color: #f5f7fa;
   box-shadow: 0 16px 42px rgba(31, 36, 43, 0.06);
 }
 
-.product-visual img {
+.product-grid .product-card .product-visual img {
   width: 100%;
   height: 100%;
+  max-width: 100%;
+  max-height: 100%;
   display: block;
   object-fit: contain;
   background: #f5f7fa;
@@ -780,8 +786,7 @@ a {
 
   .product-grid,
   .advantage-list,
-  .about-grid,
-  .logo-wall {
+  .about-grid {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -896,11 +901,15 @@ a {
   }
 
   .intro-strip,
-  .logo-wall,
   .about-grid,
   .product-grid,
   .advantage-list {
     grid-template-columns: 1fr;
+  }
+
+  .logo-wall {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
   }
 
   .about-showcase,
@@ -979,6 +988,18 @@ a {
     margin-top: 34px;
   }
 
+  .brand-logo {
+    min-height: 142px;
+  }
+
+  .brand-logo span {
+    font-size: clamp(22px, 7vw, 30px);
+  }
+
+  .product-visual {
+    height: clamp(170px, 50vw, 220px);
+  }
+
   .contact-panel {
     gap: 34px;
     border-radius: 26px;
@@ -993,6 +1014,12 @@ a {
 
   .footer-links {
     justify-content: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-wall {
+    grid-template-columns: 1fr;
   }
 }
 
