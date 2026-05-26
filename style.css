@@ -92,6 +92,76 @@ a {
   color: var(--blue);
 }
 
+.nav-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 84px;
+}
+
+.nav-dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-dropdown-trigger::after {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  opacity: 0.58;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% - 8px);
+  left: 50%;
+  min-width: 148px;
+  display: grid;
+  gap: 4px;
+  padding: 10px;
+  border: 1px solid rgba(231, 234, 240, 0.86);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 20px 60px rgba(31, 36, 43, 0.1);
+  backdrop-filter: blur(20px) saturate(130%);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 8px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown:focus-within .nav-dropdown-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+
+.nav-dropdown:hover .nav-dropdown-trigger::after,
+.nav-dropdown:focus-within .nav-dropdown-trigger::after {
+  opacity: 1;
+  transform: translateY(1px) rotate(225deg);
+}
+
+.nav-dropdown-menu a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 10px;
+  color: #4b535e;
+  white-space: nowrap;
+  font-size: 14px;
+}
+
+.nav-dropdown-menu a:hover {
+  color: var(--blue);
+  background: var(--bg-soft);
+}
+
 .nav-toggle {
   display: none;
   width: 42px;
@@ -667,6 +737,92 @@ a {
   padding-bottom: 112px;
 }
 
+.culture-hero {
+  padding-top: clamp(110px, 16vh, 170px);
+  padding-bottom: 76px;
+}
+
+.culture-hero h1 {
+  max-width: 760px;
+  margin: 0;
+  font-size: clamp(46px, 6vw, 82px);
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+.culture-hero p {
+  max-width: 680px;
+  margin: 24px 0 0;
+  color: var(--muted);
+  font-size: clamp(17px, 1.7vw, 21px);
+}
+
+.culture-section {
+  padding-bottom: 118px;
+}
+
+.culture-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.culture-card {
+  grid-column: span 2;
+  min-height: 260px;
+  padding: 32px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: 0 18px 52px rgba(31, 36, 43, 0.045);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.culture-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 70px rgba(31, 36, 43, 0.08);
+}
+
+.culture-card span {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: var(--blue);
+  background: var(--blue-soft);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.culture-card h2 {
+  margin: 34px 0 12px;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.culture-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.culture-card.highlight {
+  grid-column: span 4;
+  color: #fff;
+  background:
+    radial-gradient(circle at 84% 12%, rgba(83, 137, 255, 0.34), transparent 30%),
+    linear-gradient(135deg, #22272f, #3a4350);
+}
+
+.culture-card.highlight span {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.culture-card.highlight p {
+  color: rgba(255, 255, 255, 0.72);
+}
+
 .contact-panel {
   display: grid;
   grid-template-columns: 1fr 0.78fr;
@@ -786,8 +942,14 @@ a {
 
   .product-grid,
   .advantage-list,
-  .about-grid {
+  .about-grid,
+  .culture-grid {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .culture-card,
+  .culture-card.highlight {
+    grid-column: span 1;
   }
 
   .feature-card.large {
@@ -866,6 +1028,40 @@ a {
     background: var(--bg-soft);
   }
 
+  .nav-dropdown {
+    display: grid;
+    min-height: auto;
+  }
+
+  .nav-dropdown-trigger {
+    padding: 14px 12px;
+    border-radius: 12px;
+  }
+
+  .nav-dropdown-menu {
+    position: static;
+    min-width: 0;
+    padding: 0 0 6px 14px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+  }
+
+  .nav-dropdown-menu a {
+    padding: 10px 12px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .nav-dropdown-trigger::after {
+    display: none;
+  }
+
   .hero {
     min-height: 680px;
   }
@@ -922,15 +1118,47 @@ a {
     border-radius: 22px;
   }
 
+  .about-carousel {
+    display: flex;
+    flex-direction: column;
+    aspect-ratio: auto;
+    overflow: hidden;
+  }
+
+  .about-carousel .carousel-track {
+    height: auto;
+    aspect-ratio: 16 / 9;
+    flex: 0 0 auto;
+  }
+
   .strength-media img {
     min-height: 300px;
   }
 
+  .about-carousel img,
   .about-photo img {
     aspect-ratio: 16 / 9;
   }
 
-  .about-photo figcaption,
+  .about-carousel::after {
+    display: none;
+  }
+
+  .about-carousel figcaption {
+    position: static;
+    padding: 16px 18px 18px;
+    border: 0;
+    border-top: 1px solid var(--line);
+    border-radius: 0;
+    color: var(--text);
+    background: #fff;
+    backdrop-filter: none;
+  }
+
+  .about-carousel figcaption span {
+    color: var(--muted);
+  }
+
   .strength-media figcaption {
     left: 16px;
     right: 16px;
@@ -938,7 +1166,7 @@ a {
     padding: 16px;
   }
 
-  .about-photo figcaption strong,
+  .about-carousel figcaption strong,
   .strength-media figcaption strong {
     font-size: 19px;
   }
@@ -958,7 +1186,21 @@ a {
   }
 
   .carousel-dots {
-    bottom: 12px;
+    left: 50%;
+    right: auto;
+    bottom: 96px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: auto;
+    white-space: nowrap;
+    transform: translateX(-50%);
+  }
+
+  .carousel-dots button {
+    flex: 0 0 auto;
   }
 
   .intro-strip div {
@@ -974,6 +1216,32 @@ a {
   .contact {
     padding-top: 78px;
     padding-bottom: 78px;
+  }
+
+  .culture-hero {
+    padding-top: 96px;
+    padding-bottom: 54px;
+  }
+
+  .culture-section {
+    padding-bottom: 78px;
+  }
+
+  .culture-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .culture-card,
+  .culture-card.highlight {
+    grid-column: span 1;
+    min-height: 220px;
+    padding: 26px;
+  }
+
+  .culture-card h2 {
+    margin-top: 28px;
+    font-size: 24px;
   }
 
   .section-head {
