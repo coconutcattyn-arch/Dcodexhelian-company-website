@@ -1063,11 +1063,20 @@ a {
   }
 
   .hero {
-    min-height: 680px;
+    min-height: auto;
+    height: auto;
+    overflow: hidden;
+    background: #eef0f3;
   }
 
   .hero-bg {
-    object-position: 58% center;
+    position: relative;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    display: block;
+    object-fit: contain;
+    object-position: center;
   }
 
   .hero::before {
@@ -1077,14 +1086,18 @@ a {
   }
 
   .hero-inner {
+    position: absolute;
+    inset: 0;
     width: min(calc(100% - 32px), var(--max));
-    min-height: 680px;
+    min-height: 0;
     justify-content: flex-end;
-    padding: 150px 0 64px;
+    pointer-events: none;
+    padding: 0 0 26px;
   }
 
   .hero-copy {
     margin-left: 0;
+    pointer-events: auto;
   }
 
   .hero-actions {
