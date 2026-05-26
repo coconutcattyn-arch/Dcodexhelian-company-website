@@ -1065,7 +1065,8 @@ a {
   .hero {
     min-height: auto;
     height: auto;
-    overflow: hidden;
+    display: block;
+    overflow: visible;
     background: #eef0f3;
   }
 
@@ -1086,22 +1087,25 @@ a {
   }
 
   .hero-inner {
-    position: absolute;
-    inset: 0;
+    position: relative;
+    inset: auto;
     width: min(calc(100% - 32px), var(--max));
     min-height: 0;
+    display: block;
     justify-content: flex-end;
     pointer-events: none;
-    padding: 0 0 26px;
+    padding: 18px 0 30px;
   }
 
   .hero-copy {
     margin-left: 0;
     pointer-events: auto;
+    max-width: none;
   }
 
   .hero-actions {
     margin-top: 0;
+    justify-content: center;
   }
 
   .btn {
