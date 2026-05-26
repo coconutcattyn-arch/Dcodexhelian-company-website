@@ -1128,6 +1128,62 @@ a {
     line-height: 1.72;
   }
 
+  body #about .about-showcase > .about-grid {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 18px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    overflow: visible;
+  }
+
+  body #about .about-showcase > .about-grid > .feature-card,
+  body #about .about-showcase > .about-grid > .feature-card.large {
+    position: relative;
+    grid-column: auto;
+    grid-row: auto;
+    flex: 0 0 auto;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 24px;
+    overflow: hidden;
+    transform: none;
+    z-index: auto;
+  }
+
+  body #about .about-showcase > .about-grid > .feature-card:hover,
+  body #about .about-showcase > .about-grid > .feature-card.large:hover {
+    transform: none;
+  }
+
+  body #about .about-showcase > .about-grid > .feature-card .card-index {
+    display: inline-block;
+    margin: 0;
+  }
+
+  body #about .about-showcase > .about-grid > .feature-card h3 {
+    margin: 14px 0 8px;
+    padding: 0;
+    font-size: 22px;
+    line-height: 1.28;
+    text-align: left;
+  }
+
+  body #about .about-showcase > .about-grid > .feature-card p {
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    line-height: 1.72;
+    text-align: left;
+  }
+
   .logo-wall {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 14px;
