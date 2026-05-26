@@ -544,7 +544,7 @@ a {
 
 .logo-wall {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 18px;
   margin-top: 48px;
 }
@@ -595,30 +595,24 @@ a {
 }
 
 .product-visual {
-  height: 230px;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
   border-radius: 18px;
   background-color: #f5f7fa;
-  background-size: 100% 100%;
+  box-shadow: 0 16px 42px rgba(31, 36, 43, 0.06);
 }
 
-.product-visual.paper {
-  background-image:
-    radial-gradient(circle at 72% 28%, rgba(36, 107, 254, 0.13), transparent 26%),
-    linear-gradient(145deg, transparent 48%, rgba(31,36,43,0.06) 49% 51%, transparent 52%),
-    linear-gradient(180deg, #fff, #eef2f7);
+.product-visual img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  background: #f5f7fa;
+  transition: transform 0.35s ease;
 }
 
-.product-visual.hygiene {
-  background-image:
-    radial-gradient(circle at 32% 30%, rgba(36, 107, 254, 0.16), transparent 24%),
-    linear-gradient(135deg, rgba(255,255,255,0.95), rgba(236,240,246,0.95));
-}
-
-.product-visual.homecare {
-  background-image:
-    linear-gradient(90deg, rgba(36,107,254,0.1), transparent 42%),
-    repeating-linear-gradient(90deg, rgba(31,36,43,0.05) 0 1px, transparent 1px 34px),
-    linear-gradient(180deg, #fff, #f0f3f7);
+.product-card:hover .product-visual img {
+  transform: scale(1.025);
 }
 
 .advantage {
@@ -786,7 +780,8 @@ a {
 
   .product-grid,
   .advantage-list,
-  .about-grid {
+  .about-grid,
+  .logo-wall {
     grid-template-columns: 1fr 1fr;
   }
 
