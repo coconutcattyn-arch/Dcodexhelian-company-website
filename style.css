@@ -376,6 +376,15 @@ a {
   letter-spacing: 0;
 }
 
+#about .section-head {
+  max-width: 980px;
+}
+
+#about .section-head h2 {
+  font-size: clamp(34px, 3.5vw, 48px);
+  white-space: nowrap;
+}
+
 .section-head p,
 .contact-panel p {
   margin: 18px 0 0;
@@ -629,6 +638,8 @@ a {
   border-radius: var(--radius);
   background: #fff;
   box-shadow: 0 20px 60px rgba(31, 36, 43, 0.045);
+  color: var(--text);
+  text-decoration: none;
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
@@ -1061,6 +1072,75 @@ a {
   color: var(--muted);
 }
 
+.brand-detail-hero {
+  padding-top: clamp(110px, 16vh, 170px);
+  padding-bottom: 86px;
+}
+
+.brand-detail-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(34px, 5vw, 72px);
+  align-items: center;
+}
+
+.brand-detail-media {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) + 4px);
+  background: #fff;
+  box-shadow: 0 24px 70px rgba(31, 36, 43, 0.075);
+}
+
+.brand-detail-media img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  background: #f7f8fa;
+}
+
+.brand-detail-copy h1 {
+  margin: 0;
+  font-size: clamp(48px, 7vw, 88px);
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+.brand-detail-copy p {
+  max-width: 620px;
+  margin: 26px 0 0;
+  color: var(--muted);
+  font-size: clamp(17px, 1.45vw, 20px);
+  line-height: 1.9;
+}
+
+.brand-video-section {
+  padding-top: 0;
+  padding-bottom: 118px;
+}
+
+.brand-video-head {
+  margin-bottom: 34px;
+  text-align: center;
+}
+
+.brand-video-head h2 {
+  margin: 0;
+  font-size: clamp(32px, 4vw, 54px);
+  line-height: 1.16;
+}
+
+.brand-video {
+  width: min(100%, 980px);
+  max-height: 70vh;
+  display: block;
+  margin: 0 auto;
+  border-radius: calc(var(--radius) + 4px);
+  background: #11151a;
+  box-shadow: 0 24px 70px rgba(31, 36, 43, 0.1);
+}
+
 .contact-panel {
   display: grid;
   grid-template-columns: 1fr 0.78fr;
@@ -1174,7 +1254,8 @@ a {
   }
 
   .about-showcase,
-  .strength-layout {
+  .strength-layout,
+  .brand-detail-layout {
     grid-template-columns: 1fr;
   }
 
@@ -1344,6 +1425,15 @@ a {
   .hero-actions {
     margin-top: 0;
     justify-content: center;
+  }
+
+  #about .section-head {
+    max-width: 100%;
+  }
+
+  #about .section-head h2 {
+    font-size: clamp(31px, 8vw, 38px);
+    white-space: normal;
   }
 
   .btn {
@@ -1650,6 +1740,42 @@ a {
   .talent-card h2 {
     margin-top: 28px;
     font-size: 24px;
+  }
+
+  .brand-detail-hero {
+    padding-top: 96px;
+    padding-bottom: 58px;
+  }
+
+  .brand-detail-layout {
+    gap: 30px;
+  }
+
+  .brand-detail-media,
+  .brand-video {
+    border-radius: 24px;
+  }
+
+  .brand-detail-copy h1 {
+    font-size: clamp(42px, 13vw, 62px);
+  }
+
+  .brand-detail-copy p {
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  .brand-video-section {
+    padding-bottom: 78px;
+  }
+
+  .brand-video-head {
+    margin-bottom: 24px;
+  }
+
+  .brand-video {
+    max-height: none;
   }
 
   .page-links {
