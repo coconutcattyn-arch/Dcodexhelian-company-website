@@ -74,8 +74,64 @@ if (aboutCarousel) {
   updateCarousel(0);
 }
 
+const brandCarousel = document.querySelector(".brand-carousel");
+
+if (brandCarousel) {
+  const track = brandCarousel.querySelector(".brand-logo-track");
+  const prevButton = brandCarousel.querySelector(".brand-carousel-prev");
+  const nextButton = brandCarousel.querySelector(".brand-carousel-next");
+  const originalLogos = track ? Array.from(track.children) : [];
+
+  originalLogos.forEach((logo) => {
+    const clone = logo.cloneNode(true);
+    clone.setAttribute("aria-hidden", "true");
+    if (clone.matches("a")) {
+      clone.setAttribute("tabindex", "-1");
+    }
+    clone.querySelectorAll("a").forEach((link) => {
+      link.setAttribute("tabindex", "-1");
+    });
+    track?.appendChild(clone);
+  });
+
+  const nudgeTrack = (direction) => {
+    if (!track || originalLogos.length === 0) return;
+    const firstLogo = originalLogos[0];
+    const gap = Number.parseFloat(getComputedStyle(track).gap || "0");
+    const distance = firstLogo.getBoundingClientRect().width + gap;
+    const currentDuration = getComputedStyle(track).animationDuration;
+    const currentTransform = getComputedStyle(track).transform;
+
+    track.style.animation = "none";
+    track.style.transform = `${currentTransform === "none" ? "" : currentTransform} translateX(${-distance * direction}px)`;
+    window.setTimeout(() => {
+      track.style.animation = "";
+      track.style.transform = "";
+      track.style.animationDuration = currentDuration;
+    }, 280);
+  };
+
+  const pause = () => {
+    brandCarousel.classList.add("is-paused");
+  };
+
+  const resume = () => {
+    brandCarousel.classList.remove("is-paused");
+  };
+
+  prevButton?.addEventListener("click", () => nudgeTrack(-1));
+  nextButton?.addEventListener("click", () => nudgeTrack(1));
+
+  brandCarousel.addEventListener("mouseenter", pause);
+  brandCarousel.addEventListener("mouseleave", resume);
+  brandCarousel.addEventListener("focusin", pause);
+  brandCarousel.addEventListener("focusout", resume);
+  brandCarousel.addEventListener("touchstart", pause, { passive: true });
+  brandCarousel.addEventListener("touchend", resume, { passive: true });
+}
+
 const revealTargets = document.querySelectorAll(
-  ".section-head, .about-photo, .feature-card, .brand-logo, .product-card, .advantage-item, .contact-panel, .intro-strip"
+  ".section-head, .about-photo, .feature-card, .brand-carousel, .product-card, .advantage-item, .contact-panel, .intro-strip"
 );
 
 revealTargets.forEach((target) => target.classList.add("reveal"));
