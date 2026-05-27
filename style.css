@@ -419,9 +419,11 @@ a {
 
 .about-carousel {
   aspect-ratio: 16 / 9;
+  overflow: hidden;
 }
 
 .carousel-track {
+  width: 100%;
   height: 100%;
   display: flex;
   transform: translateX(0);
@@ -434,16 +436,17 @@ a {
   height: 100%;
   min-width: 100%;
   display: block;
-  object-fit: contain;
-  background: #f5f6f8;
+  object-fit: cover;
+  object-position: center;
 }
 
 .about-carousel img {
   aspect-ratio: 16 / 9;
+  width: 100%;
   height: 100%;
   min-height: 0;
-  object-fit: contain;
-  background: #f5f6f8;
+  object-fit: cover;
+  object-position: center;
 }
 
 .strength-media img {
@@ -1564,6 +1567,12 @@ a {
   .about-carousel img,
   .about-photo img {
     aspect-ratio: 16 / 9;
+  }
+
+  .about-carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .about-carousel::after {
