@@ -633,35 +633,41 @@ a {
 
 .brand-logo {
   min-width: 0;
-  min-height: 172px;
+  min-height: 188px;
   display: grid;
   place-items: center;
   align-content: center;
+  padding: 30px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: #fff;
-  box-shadow: 0 20px 60px rgba(31, 36, 43, 0.045);
+  box-shadow: 0 18px 54px rgba(31, 36, 43, 0.05);
   color: var(--text);
   text-decoration: none;
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease;
 }
 
 .brand-logo:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
   border-color: rgba(36, 107, 254, 0.26);
+  background-color: #fff;
+  box-shadow: 0 24px 72px rgba(31, 36, 43, 0.085);
 }
 
-.brand-logo span {
-  font-size: clamp(26px, 3vw, 38px);
-  font-weight: 700;
+.brand-logo img {
+  width: min(100%, 178px);
+  height: 96px;
+  max-height: 96px;
+  display: block;
+  object-fit: contain;
+  object-position: center;
+  transform: scale(1.08);
+  transform-origin: center;
+  transition: transform 0.22s ease;
 }
 
-.brand-logo small {
-  margin-top: 8px;
-  color: var(--muted);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+.brand-logo:hover img {
+  transform: scale(1.12);
 }
 
 .page-links {
@@ -1822,11 +1828,14 @@ a {
   }
 
   .brand-logo {
-    min-height: 142px;
+    min-height: 150px;
+    padding: 24px;
   }
 
-  .brand-logo span {
-    font-size: clamp(22px, 7vw, 30px);
+  .brand-logo img {
+    width: min(100%, 138px);
+    height: 76px;
+    max-height: 76px;
   }
 
   .product-visual {
@@ -1853,6 +1862,16 @@ a {
 @media (max-width: 480px) {
   .logo-wall {
     grid-template-columns: 1fr;
+  }
+
+  .brand-logo {
+    min-height: 136px;
+  }
+
+  .brand-logo img {
+    width: min(100%, 150px);
+    height: 72px;
+    max-height: 72px;
   }
 }
 
