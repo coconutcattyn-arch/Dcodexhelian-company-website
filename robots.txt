@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://coconutcattyn-arch.github.io/Dcodexhelian-company-website/sitemap.xml
