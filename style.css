@@ -2941,26 +2941,51 @@ a {
   }
 
   .management-founder-layout {
-    gap: 18px;
+    gap: 16px;
+  }
+
+  .management-name {
+    order: 2;
+    width: 100%;
+    justify-self: stretch;
+    align-self: start;
+    text-align: left;
   }
 
   .management-name h2,
   .management-name p {
-    font-size: clamp(25px, 7vw, 34px);
+    font-size: 19px;
+    line-height: 1.55;
+  }
+
+  .management-name h2 {
+    font-weight: 700;
+  }
+
+  .management-name p {
+    margin-top: 2px;
+    font-weight: 400;
+    color: #11151a;
   }
 
   .management-photo {
-    width: min(72vw, 320px);
+    order: 1;
+    width: 100%;
+    max-width: 420px;
     justify-self: center;
     transform: none;
   }
 
   .management-photo img {
+    width: 100%;
+    height: auto;
     max-height: 430px;
+    object-fit: contain;
+    object-position: center bottom;
   }
 
   .management-bio {
-    padding-top: 44px;
+    padding-top: 36px;
     padding-bottom: 84px;
   }
 
