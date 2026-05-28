@@ -1209,6 +1209,193 @@ a {
   line-height: 1.7;
 }
 
+.careers-hero {
+  padding-top: clamp(110px, 16vh, 170px);
+  padding-bottom: 72px;
+  text-align: center;
+}
+
+.careers-hero .eyebrow {
+  justify-content: center;
+}
+
+.careers-hero h1 {
+  margin: 0 auto;
+  font-size: clamp(46px, 6vw, 78px);
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+.careers-hero p {
+  max-width: 720px;
+  margin: 24px auto 0;
+  color: var(--muted);
+  font-size: clamp(17px, 1.7vw, 21px);
+}
+
+.careers-section {
+  padding-top: 0;
+  padding-bottom: 118px;
+}
+
+.jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.job-card {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: 0 18px 52px rgba(31, 36, 43, 0.045);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.job-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 70px rgba(31, 36, 43, 0.08);
+}
+
+.job-card-head {
+  padding-bottom: 26px;
+  border-bottom: 1px solid var(--line);
+}
+
+.job-card-head span {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  color: var(--blue);
+  background: var(--blue-soft);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.job-card-head h2 {
+  margin: 28px 0 8px;
+  font-size: clamp(26px, 2.5vw, 34px);
+  line-height: 1.18;
+}
+
+.job-card-head p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.job-block {
+  margin-top: 28px;
+}
+
+.job-block h3 {
+  margin: 0 0 14px;
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.35;
+}
+
+.job-block ul {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.job-block li {
+  position: relative;
+  padding-left: 18px;
+}
+
+.job-block li::before {
+  content: "";
+  position: absolute;
+  top: 0.78em;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--blue);
+}
+
+.job-salary {
+  margin-top: auto;
+  padding-top: 30px;
+}
+
+.job-salary span {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.job-salary strong {
+  display: block;
+  padding: 18px 20px;
+  border-radius: 18px;
+  color: var(--text);
+  background: linear-gradient(135deg, #f6f8fc, #ffffff);
+  box-shadow: inset 0 0 0 1px var(--line);
+  font-size: clamp(18px, 1.7vw, 22px);
+  line-height: 1.35;
+}
+
+.careers-contact {
+  max-width: 760px;
+  margin: 44px auto 0;
+  padding: clamp(30px, 5vw, 48px);
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) + 4px);
+  text-align: center;
+  background:
+    radial-gradient(circle at 86% 14%, rgba(83, 137, 255, 0.12), transparent 34%),
+    #fff;
+  box-shadow: 0 22px 64px rgba(31, 36, 43, 0.06);
+}
+
+.careers-contact span {
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.careers-contact h2 {
+  margin: 16px 0 12px;
+  font-size: clamp(26px, 3vw, 42px);
+  line-height: 1.18;
+}
+
+.careers-contact p {
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.5;
+}
+
+.careers-contact a {
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.careers-contact a:hover {
+  color: var(--blue);
+}
+
 .brand-detail-hero {
   padding-top: clamp(110px, 16vh, 170px);
   padding-bottom: 86px;
@@ -1551,7 +1738,8 @@ a {
   .product-grid,
   .advantage-list,
   .about-grid,
-  .culture-grid {
+  .culture-grid,
+  .jobs-grid {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -2074,6 +2262,45 @@ a {
   .talent-activity figcaption {
     margin-top: 14px;
     font-size: 14px;
+  }
+
+  .careers-hero {
+    padding-top: 96px;
+    padding-bottom: 54px;
+  }
+
+  .careers-section {
+    padding-bottom: 78px;
+  }
+
+  .jobs-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .job-card {
+    padding: 26px;
+  }
+
+  .job-card-head {
+    padding-bottom: 22px;
+  }
+
+  .job-card-head h2 {
+    margin-top: 24px;
+  }
+
+  .job-block {
+    margin-top: 24px;
+  }
+
+  .job-salary {
+    padding-top: 26px;
+  }
+
+  .careers-contact {
+    margin-top: 32px;
+    border-radius: 24px;
   }
 
   .brand-detail-hero {
