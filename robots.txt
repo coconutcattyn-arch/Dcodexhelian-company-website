@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://coconutcattyn-arch.github.io/Dcodexhelian-company-website/sitemap.xml
+Sitemap: https://www.jininghelian.cn/sitemap.xml
