@@ -167,6 +167,60 @@ a {
   background: var(--bg-soft);
 }
 
+.nav-subdropdown {
+  position: relative;
+}
+
+.nav-subdropdown-trigger {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.nav-subdropdown-trigger::after {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-top: 1.5px solid currentColor;
+  border-right: 1.5px solid currentColor;
+  opacity: 0.58;
+  transform: rotate(45deg);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-subdropdown-menu {
+  position: absolute;
+  top: 0;
+  left: calc(100% + 10px);
+  min-width: 154px;
+  display: grid;
+  gap: 4px;
+  padding: 10px;
+  border: 1px solid rgba(231, 234, 240, 0.86);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 20px 60px rgba(31, 36, 43, 0.1);
+  backdrop-filter: blur(20px) saturate(130%);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(8px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.nav-subdropdown:hover .nav-subdropdown-menu,
+.nav-subdropdown:focus-within .nav-subdropdown-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+}
+
+.nav-subdropdown:hover .nav-subdropdown-trigger::after,
+.nav-subdropdown:focus-within .nav-subdropdown-trigger::after {
+  opacity: 1;
+  transform: rotate(45deg) translate(1px, -1px);
+}
+
 .nav-toggle {
   display: none;
   width: 42px;
@@ -2009,6 +2063,38 @@ a {
     padding: 10px 12px;
     color: var(--muted);
     font-size: 14px;
+  }
+
+  .nav-subdropdown {
+    display: grid;
+  }
+
+  .nav-subdropdown-trigger {
+    justify-content: flex-start;
+  }
+
+  .nav-subdropdown-trigger::after {
+    display: none;
+  }
+
+  .nav-subdropdown-menu {
+    position: static;
+    min-width: 0;
+    padding: 0 0 4px 14px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+  }
+
+  .nav-subdropdown-menu a {
+    padding: 9px 12px;
+    color: var(--muted);
+    font-size: 13px;
   }
 
   .nav-dropdown-trigger::after {
