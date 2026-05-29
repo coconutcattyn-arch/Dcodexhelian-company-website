@@ -130,6 +130,46 @@ if (brandCarousel) {
   brandCarousel.addEventListener("touchend", resume, { passive: true });
 }
 
+document.querySelectorAll("[data-news-gallery]").forEach((gallery) => {
+  const cards = Array.from(gallery.querySelectorAll(".news-photo-card"));
+  const prevButton = gallery.querySelector(".news-gallery-prev");
+  const nextButton = gallery.querySelector(".news-gallery-next");
+  const groupSize = 5;
+  let currentGroup = 0;
+
+  if (cards.length <= groupSize) {
+    prevButton?.setAttribute("hidden", "");
+    nextButton?.setAttribute("hidden", "");
+    return;
+  }
+
+  const updateNewsGallery = () => {
+    const start = currentGroup * groupSize;
+    const end = start + groupSize;
+
+    cards.forEach((card, index) => {
+      card.hidden = index < start || index >= end;
+    });
+
+    if (prevButton) prevButton.disabled = currentGroup === 0;
+    if (nextButton) nextButton.disabled = end >= cards.length;
+  };
+
+  prevButton?.addEventListener("click", () => {
+    if (currentGroup === 0) return;
+    currentGroup -= 1;
+    updateNewsGallery();
+  });
+
+  nextButton?.addEventListener("click", () => {
+    if ((currentGroup + 1) * groupSize >= cards.length) return;
+    currentGroup += 1;
+    updateNewsGallery();
+  });
+
+  updateNewsGallery();
+});
+
 const revealTargets = document.querySelectorAll(
   ".section-head, .about-photo, .feature-card, .brand-carousel, .product-card, .advantage-item, .contact-panel, .intro-strip"
 );
