@@ -3441,6 +3441,7 @@ a {
   .management-founder {
     padding-top: 0;
     padding-bottom: 0;
+    background: #f5f6f7;
   }
 
   .management-founder-layout,
@@ -3449,15 +3450,30 @@ a {
   }
 
   .management-founder-layout {
-    gap: 16px;
+    gap: 0;
   }
 
   .management-name {
     order: 2;
+    position: relative;
+    z-index: 1;
     width: 100%;
     justify-self: stretch;
     align-self: start;
     text-align: left;
+    padding: 30px 0 18px;
+  }
+
+  .management-name::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: -1px;
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
+    background: #fff;
   }
 
   .management-name h2,
@@ -3482,6 +3498,8 @@ a {
     max-width: 420px;
     justify-self: center;
     transform: none;
+    margin: 0 auto;
+    padding-bottom: clamp(28px, 8vw, 44px);
   }
 
   .management-photo img {
@@ -3493,7 +3511,7 @@ a {
   }
 
   .management-bio {
-    padding-top: 36px;
+    padding-top: 0;
     padding-bottom: 84px;
   }
 
