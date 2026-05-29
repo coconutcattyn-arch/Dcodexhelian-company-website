@@ -2116,16 +2116,16 @@ a {
 .news-hero h1 {
   max-width: 780px;
   margin: 0;
-  font-size: clamp(46px, 6.2vw, 84px);
-  line-height: 1.06;
+  font-size: clamp(30px, 3.4vw, 44px);
+  line-height: 1.16;
   letter-spacing: 0;
 }
 
 .news-hero p {
   max-width: 760px;
-  margin: 24px 0 0;
+  margin: 18px 0 0;
   color: var(--muted);
-  font-size: clamp(17px, 1.7vw, 21px);
+  font-size: clamp(15px, 1.35vw, 17px);
   line-height: 1.85;
 }
 
@@ -2192,7 +2192,7 @@ a {
 
 .news-section-head h2 {
   margin: 0;
-  font-size: clamp(21px, 2vw, 28px);
+  font-size: clamp(18px, 1.45vw, 22px);
   line-height: 1.25;
   font-weight: 650;
 }
@@ -2269,8 +2269,8 @@ a {
 
 .industry-placeholder-panel h3 {
   margin: 16px 0 14px;
-  font-size: clamp(26px, 3.2vw, 40px);
-  line-height: 1.18;
+  font-size: clamp(20px, 2vw, 26px);
+  line-height: 1.28;
 }
 
 .industry-placeholder-panel p {
