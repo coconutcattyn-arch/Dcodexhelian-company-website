@@ -8,6 +8,79 @@
   <title>济宁卫生纸批发｜生活用纸批发配送｜济宁和联商贸</title>
   <link rel="canonical" href="https://www.jininghelian.cn/seo-jining-weishengzhi-pifa.html">
   <link rel="stylesheet" href="style.css?v=20260526-products-brands">
+  <style>
+    .paper-category-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .paper-category-card {
+      overflow: hidden;
+      min-height: 0;
+      padding: 0;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .paper-category-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(36, 107, 254, 0.24);
+      box-shadow: 0 28px 76px rgba(31, 36, 43, 0.1);
+    }
+
+    .paper-category-card figure {
+      margin: 0;
+      overflow: hidden;
+      background: #f6f7f9;
+    }
+
+    .paper-category-card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      transition: transform 0.32s ease;
+    }
+
+    .paper-category-card:hover img {
+      transform: scale(1.04);
+    }
+
+    .paper-category-card-body {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 18px;
+      padding: 24px;
+      align-items: start;
+    }
+
+    .paper-category-card span {
+      margin: 0;
+      border-radius: 50%;
+      color: #fff;
+      background: var(--accent);
+      box-shadow: 0 10px 24px rgba(36, 107, 254, 0.2);
+    }
+
+    .paper-category-card h3 {
+      margin-top: 2px;
+    }
+
+    @media (max-width: 960px) {
+      .paper-category-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .paper-category-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .paper-category-card-body {
+        padding: 22px;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header" id="top">
@@ -63,13 +136,31 @@
           <h2>生活用纸批发品类</h2>
           <p>围绕家庭日用、商用消耗和单位采购场景，提供常用纸品组合，帮助客户减少多方询价和临时补货压力。</p>
         </div>
-        <div class="seo-grid">
-          <article class="seo-card"><span>01</span><h3>卷纸</h3><p>适合社区超市、便利店和家庭消费货架，支持常规规格补货。</p></article>
-          <article class="seo-card"><span>02</span><h3>抽纸</h3><p>覆盖家庭装、商超陈列和活动促销等高频消费需求。</p></article>
-          <article class="seo-card"><span>03</span><h3>大盘纸</h3><p>适用于办公楼、商场、酒店、学校等公共卫生间消耗场景。</p></article>
-          <article class="seo-card"><span>04</span><h3>商用擦手纸</h3><p>面向餐饮、单位、工厂和公共空间，重视稳定供给和配送响应。</p></article>
-          <article class="seo-card"><span>05</span><h3>餐巾纸</h3><p>服务餐饮门店、酒店和团购客户，便于与其他纸品混合采购。</p></article>
-          <article class="seo-card"><span>06</span><h3>酒店/单位用纸</h3><p>可根据使用场景沟通规格、数量和配送周期，适合长期合作。</p></article>
+        <div class="seo-grid paper-category-grid">
+          <article class="seo-card paper-category-card">
+            <figure><img src="images/seo-paper-products/toilet-roll.webp" alt="卷纸批发产品图" loading="lazy"></figure>
+            <div class="paper-category-card-body"><span>01</span><div><h3>卷纸</h3><p>适合社区超市、便利店和家庭消费货架，支持常规规格补货。</p></div></div>
+          </article>
+          <article class="seo-card paper-category-card">
+            <figure><img src="images/seo-paper-products/facial-tissue.webp" alt="抽纸批发产品图" loading="lazy"></figure>
+            <div class="paper-category-card-body"><span>02</span><div><h3>抽纸</h3><p>覆盖家庭装、商超陈列和活动促销等高频消费需求。</p></div></div>
+          </article>
+          <article class="seo-card paper-category-card">
+            <figure><img src="images/seo-paper-products/jumbo-roll.webp" alt="大盘纸批发产品图" loading="lazy"></figure>
+            <div class="paper-category-card-body"><span>03</span><div><h3>大盘纸</h3><p>适用于办公楼、商场、酒店、学校等公共卫生间消耗场景。</p></div></div>
+          </article>
+          <article class="seo-card paper-category-card">
+            <figure><img src="images/seo-paper-products/hand-towel.webp" alt="商用擦手纸批发产品图" loading="lazy"></figure>
+            <div class="paper-category-card-body"><span>04</span><div><h3>商用擦手纸</h3><p>面向餐饮、单位、工厂和公共空间，重视稳定供给和配送响应。</p></div></div>
+          </article>
+          <article class="seo-card paper-category-card">
+            <figure><img src="images/seo-paper-products/napkin.webp" alt="餐巾纸批发产品图" loading="lazy"></figure>
+            <div class="paper-category-card-body"><span>05</span><div><h3>餐巾纸</h3><p>服务餐饮门店、酒店和团购客户，便于与其他纸品混合采购。</p></div></div>
+          </article>
+          <article class="seo-card paper-category-card">
+            <figure><img src="images/seo-paper-products/hotel-office-paper.webp" alt="酒店单位用纸批发产品图" loading="lazy"></figure>
+            <div class="paper-category-card-body"><span>06</span><div><h3>酒店/单位用纸</h3><p>可根据使用场景沟通规格、数量和配送周期，适合长期合作。</p></div></div>
+          </article>
         </div>
       </div>
     </section>

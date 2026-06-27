@@ -8,6 +8,79 @@
   <title>济宁卫生巾批发｜女性护理用品供货｜济宁和联商贸</title>
   <link rel="canonical" href="https://www.jininghelian.cn/seo-jining-weishengjin-pifa.html">
   <link rel="stylesheet" href="style.css?v=20260526-products-brands">
+  <style>
+    .hygiene-product-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .hygiene-product-card {
+      overflow: hidden;
+      min-height: 0;
+      padding: 0;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .hygiene-product-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(36, 107, 254, 0.24);
+      box-shadow: 0 28px 76px rgba(31, 36, 43, 0.1);
+    }
+
+    .hygiene-product-card figure {
+      margin: 0;
+      overflow: hidden;
+      background: #f6f7f9;
+    }
+
+    .hygiene-product-card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      transition: transform 0.32s ease;
+    }
+
+    .hygiene-product-card:hover img {
+      transform: scale(1.04);
+    }
+
+    .hygiene-product-card-body {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 18px;
+      padding: 24px;
+      align-items: start;
+    }
+
+    .hygiene-product-card span {
+      margin: 0;
+      border-radius: 50%;
+      color: #fff;
+      background: var(--accent);
+      box-shadow: 0 10px 24px rgba(36, 107, 254, 0.2);
+    }
+
+    .hygiene-product-card h3 {
+      margin-top: 2px;
+    }
+
+    @media (max-width: 960px) {
+      .hygiene-product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .hygiene-product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hygiene-product-card-body {
+        padding: 22px;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header" id="top">
@@ -57,13 +130,31 @@
           <h2>女性护理用品供货品类</h2>
           <p>卫生巾规格细分较多，合理的产品组合有助于门店覆盖不同消费场景，同时保持稳定周转。</p>
         </div>
-        <div class="seo-grid">
-          <article class="seo-card"><span>01</span><h3>日用卫生巾</h3><p>适合商超、便利店和日化门店常规陈列，是门店基础补货品类。</p></article>
-          <article class="seo-card"><span>02</span><h3>夜用卫生巾</h3><p>满足不同使用场景和规格需求，适合与日用产品组合销售。</p></article>
-          <article class="seo-card"><span>03</span><h3>护垫</h3><p>适合便利店、母婴店和日化门店补充小规格女性护理货架。</p></article>
-          <article class="seo-card"><span>04</span><h3>组合装</h3><p>便于商超活动、节日促销和家庭囤货消费，提高单次采购效率。</p></article>
-          <article class="seo-card"><span>05</span><h3>女性护理用品</h3><p>围绕卫生护理相关品类进行组合沟通，满足门店多样化需求。</p></article>
-          <article class="seo-card"><span>06</span><h3>商超/便利店供货</h3><p>支持终端铺货、日常补货和活动备货，重视货架供应连续性。</p></article>
+        <div class="seo-grid hygiene-product-grid">
+          <article class="seo-card hygiene-product-card">
+            <figure><img src="images/seo-hygiene-products/daily-sanitary-pad.webp" alt="日用卫生巾产品包装和门店基础补货陈列" loading="lazy"></figure>
+            <div class="hygiene-product-card-body"><span>01</span><div><h3>日用卫生巾</h3><p>适合商超、便利店和日化门店常规陈列，是门店基础补货品类。</p></div></div>
+          </article>
+          <article class="seo-card hygiene-product-card">
+            <figure><img src="images/seo-hygiene-products/night-sanitary-pad.webp" alt="夜用卫生巾产品包装和多规格组合展示" loading="lazy"></figure>
+            <div class="hygiene-product-card-body"><span>02</span><div><h3>夜用卫生巾</h3><p>满足不同使用场景和规格需求，适合与日用产品组合销售。</p></div></div>
+          </article>
+          <article class="seo-card hygiene-product-card">
+            <figure><img src="images/seo-hygiene-products/pantyliner.webp" alt="护垫和小规格女性护理用品包装" loading="lazy"></figure>
+            <div class="hygiene-product-card-body"><span>03</span><div><h3>护垫</h3><p>适合便利店、母婴店和日化门店补充小规格女性护理货架。</p></div></div>
+          </article>
+          <article class="seo-card hygiene-product-card">
+            <figure><img src="images/seo-hygiene-products/combo-pack.webp" alt="女性护理用品组合装和家庭采购产品组合" loading="lazy"></figure>
+            <div class="hygiene-product-card-body"><span>04</span><div><h3>组合装</h3><p>便于商超活动、节日促销和家庭囤货消费，提高单次采购效率。</p></div></div>
+          </article>
+          <article class="seo-card hygiene-product-card">
+            <figure><img src="images/seo-hygiene-products/feminine-care.webp" alt="女性护理相关用品组合展示" loading="lazy"></figure>
+            <div class="hygiene-product-card-body"><span>05</span><div><h3>女性护理用品</h3><p>围绕卫生护理相关品类进行组合沟通，满足门店多样化需求。</p></div></div>
+          </article>
+          <article class="seo-card hygiene-product-card">
+            <figure><img src="images/seo-hygiene-products/retail-supply.webp" alt="商超便利店女性护理用品货架陈列和渠道供货场景" loading="lazy"></figure>
+            <div class="hygiene-product-card-body"><span>06</span><div><h3>商超/便利店供货</h3><p>支持终端铺货、日常补货和活动备货，重视货架供应连续性。</p></div></div>
+          </article>
         </div>
       </div>
     </section>
