@@ -4,8 +4,49 @@ const navLinks = document.querySelectorAll(".nav-menu a");
 
 document.documentElement.classList.add("js-enabled");
 
+// Accept a touch-generated link click only when the pointer did not become a
+// drag and did not finish over a different link after scrolling or animation.
+let touchPointer = null;
+let blockedTouchClickUntil = 0;
+
+document.addEventListener("pointerdown", (event) => {
+  if (event.pointerType === "mouse") return;
+  touchPointer = {
+    id: event.pointerId,
+    x: event.clientX,
+    y: event.clientY,
+    link: event.target.closest("a[href]"),
+    moved: false,
+  };
+}, true);
+
+document.addEventListener("pointermove", (event) => {
+  if (!touchPointer || event.pointerId !== touchPointer.id) return;
+  if (Math.hypot(event.clientX - touchPointer.x, event.clientY - touchPointer.y) > 10) touchPointer.moved = true;
+}, true);
+
+document.addEventListener("pointerup", (event) => {
+  if (!touchPointer || event.pointerId !== touchPointer.id) return;
+  const releasedLink = event.target.closest("a[href]");
+  if (touchPointer.moved || releasedLink !== touchPointer.link) blockedTouchClickUntil = performance.now() + 700;
+  touchPointer = null;
+}, true);
+
+document.addEventListener("pointercancel", () => {
+  blockedTouchClickUntil = performance.now() + 700;
+  touchPointer = null;
+}, true);
+
+document.addEventListener("click", (event) => {
+  if (performance.now() > blockedTouchClickUntil || !event.target.closest("a[href]")) return;
+  event.preventDefault();
+  event.stopImmediatePropagation();
+}, true);
+
 if (navToggle && navMenu) {
-  navToggle.addEventListener("click", () => {
+  navToggle.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
     const isOpen = navMenu.classList.toggle("open");
     navToggle.classList.toggle("active", isOpen);
     navToggle.setAttribute("aria-expanded", String(isOpen));
@@ -26,7 +67,7 @@ const aboutCarousel = document.querySelector(".about-carousel");
 
 const stopCarouselControlEvent = (event) => {
   event.preventDefault();
-  event.stopPropagation();
+  event.stopImmediatePropagation();
 };
 
 const bindCarouselControl = (control, action) => {
