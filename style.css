@@ -16,12 +16,6 @@
   box-sizing: border-box;
 }
 
-/* Generated visual layers never participate in pointer hit testing. */
-*::before,
-*::after {
-  pointer-events: none;
-}
-
 html {
   scroll-behavior: smooth;
 }
@@ -40,17 +34,6 @@ a {
   text-decoration: none;
 }
 
-[hidden],
-[aria-hidden="true"]:not(.brand-logo) {
-  pointer-events: none !important;
-}
-
-main img,
-main video,
-main svg {
-  pointer-events: none;
-}
-
 .sr-only {
   position: absolute;
   width: 1px;
@@ -67,7 +50,6 @@ main svg {
   position: sticky;
   top: 0;
   z-index: 100;
-  isolation: isolate;
   border-bottom: 1px solid rgba(255, 255, 255, 0.22);
   background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(22px) saturate(130%);
@@ -2854,7 +2836,6 @@ main svg {
   display: block;
   object-fit: contain;
   object-position: center;
-  pointer-events: none;
 }
 
 .news-photo-card::after {
