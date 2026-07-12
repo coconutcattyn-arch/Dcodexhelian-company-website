@@ -499,6 +499,7 @@ a {
 .about-carousel {
   aspect-ratio: 16 / 9;
   overflow: hidden;
+  touch-action: pan-y;
 }
 
 .carousel-track {
@@ -788,6 +789,10 @@ a {
   color: var(--text);
   text-decoration: none;
   transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease;
+}
+
+.brand-logo-clone {
+  pointer-events: none;
 }
 
 .brand-logo:hover {

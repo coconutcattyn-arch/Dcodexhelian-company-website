@@ -44,11 +44,23 @@ if (aboutCarousel) {
     });
   };
 
-  prevButton?.addEventListener("click", () => updateCarousel(currentSlide - 1));
-  nextButton?.addEventListener("click", () => updateCarousel(currentSlide + 1));
+  prevButton?.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    updateCarousel(currentSlide - 1);
+  });
+  nextButton?.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    updateCarousel(currentSlide + 1);
+  });
 
   dots.forEach((dot, dotIndex) => {
-    dot.addEventListener("click", () => updateCarousel(dotIndex));
+    dot.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      updateCarousel(dotIndex);
+    });
   });
 
   aboutCarousel.addEventListener(
@@ -85,6 +97,7 @@ if (brandCarousel) {
   originalLogos.forEach((logo) => {
     const clone = logo.cloneNode(true);
     clone.setAttribute("aria-hidden", "true");
+    clone.classList.add("brand-logo-clone");
     if (clone.matches("a")) {
       clone.setAttribute("tabindex", "-1");
     }
@@ -119,8 +132,16 @@ if (brandCarousel) {
     brandCarousel.classList.remove("is-paused");
   };
 
-  prevButton?.addEventListener("click", () => nudgeTrack(-1));
-  nextButton?.addEventListener("click", () => nudgeTrack(1));
+  prevButton?.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    nudgeTrack(-1);
+  });
+  nextButton?.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    nudgeTrack(1);
+  });
 
   brandCarousel.addEventListener("mouseenter", pause);
   brandCarousel.addEventListener("mouseleave", resume);
@@ -172,13 +193,17 @@ document.querySelectorAll("[data-news-gallery]").forEach((gallery) => {
     if (nextButton) nextButton.disabled = end >= cards.length;
   };
 
-  prevButton?.addEventListener("click", () => {
+  prevButton?.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
     if (currentGroup === 0) return;
     currentGroup -= 1;
     updateNewsGallery();
   });
 
-  nextButton?.addEventListener("click", () => {
+  nextButton?.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
     if ((currentGroup + 1) * groupSize >= cards.length) return;
     currentGroup += 1;
     updateNewsGallery();
