@@ -499,8 +499,6 @@ a {
 .about-carousel {
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  isolation: isolate;
-  touch-action: pan-y;
 }
 
 .carousel-track {
@@ -509,7 +507,6 @@ a {
   display: flex;
   transform: translateX(0);
   transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
-  pointer-events: none;
 }
 
 .carousel-track img {
@@ -588,8 +585,6 @@ a {
   position: absolute;
   top: 50%;
   z-index: 2;
-  pointer-events: auto;
-  touch-action: manipulation;
   width: 42px;
   height: 42px;
   display: grid;
@@ -638,7 +633,6 @@ a {
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.44);
   cursor: pointer;
-  touch-action: manipulation;
   transition: width 0.2s ease, background 0.2s ease;
 }
 
@@ -716,7 +710,6 @@ a {
 
 .brand-carousel {
   position: relative;
-  isolation: isolate;
   margin-top: 48px;
   padding: 0 54px;
 }
@@ -824,8 +817,6 @@ a {
   position: absolute;
   top: 50%;
   z-index: 2;
-  pointer-events: auto;
-  touch-action: manipulation;
   width: 42px;
   height: 42px;
   display: grid;
@@ -3403,14 +3394,12 @@ a {
 
 .js-enabled .reveal {
   opacity: 0;
-  pointer-events: none;
   transform: translateY(18px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .js-enabled .reveal.visible {
   opacity: 1;
-  pointer-events: auto;
   transform: translateY(0);
 }
 
