@@ -158,22 +158,9 @@ document.querySelectorAll("[data-news-gallery]").forEach((gallery) => {
   const groupSize = 5;
   let currentGroup = 0;
 
-  const hydrateNewsCardImage = (card) => {
-    const image = card.querySelector("img[data-src]");
-    if (!image) return;
-
-    image.src = image.dataset.src;
-    if (image.dataset.srcset) {
-      image.srcset = image.dataset.srcset;
-    }
-    image.removeAttribute("data-src");
-    image.removeAttribute("data-srcset");
-  };
-
   if (cards.length <= groupSize) {
     prevButton?.setAttribute("hidden", "");
     nextButton?.setAttribute("hidden", "");
-    cards.forEach(hydrateNewsCardImage);
     return;
   }
 
@@ -184,9 +171,6 @@ document.querySelectorAll("[data-news-gallery]").forEach((gallery) => {
     cards.forEach((card, index) => {
       const isVisible = index >= start && index < end;
       card.hidden = !isVisible;
-      if (isVisible) {
-        hydrateNewsCardImage(card);
-      }
     });
 
     if (prevButton) prevButton.disabled = currentGroup === 0;
@@ -213,7 +197,7 @@ document.querySelectorAll("[data-news-gallery]").forEach((gallery) => {
 });
 
 const revealTargets = document.querySelectorAll(
-  ".section-head, .about-photo, .feature-card, .brand-carousel, .product-card, .advantage-item, .contact-panel, .intro-strip"
+  ".section-head, .feature-card, .advantage-item, .contact-panel, .intro-strip"
 );
 
 revealTargets.forEach((target) => target.classList.add("reveal"));
