@@ -24,6 +24,20 @@ navLinks.forEach((link) => {
 
 const aboutCarousel = document.querySelector(".about-carousel");
 
+const stopCarouselControlEvent = (event) => {
+  event.preventDefault();
+  event.stopPropagation();
+};
+
+const bindCarouselControl = (control, action) => {
+  if (!control) return;
+  control.addEventListener("pointerdown", stopCarouselControlEvent);
+  control.addEventListener("click", (event) => {
+    stopCarouselControlEvent(event);
+    action();
+  });
+};
+
 if (aboutCarousel) {
   const track = aboutCarousel.querySelector(".carousel-track");
   const slides = Array.from(aboutCarousel.querySelectorAll(".carousel-track img"));
@@ -31,7 +45,10 @@ if (aboutCarousel) {
   const nextButton = aboutCarousel.querySelector(".carousel-next");
   const dots = Array.from(aboutCarousel.querySelectorAll(".carousel-dots button"));
   let currentSlide = 0;
-  let touchStartX = 0;
+  let pointerStartX = 0;
+  let pointerStartY = 0;
+  let trackingPointerId = null;
+  let didDrag = false;
 
   const updateCarousel = (index) => {
     if (!track || slides.length === 0) return;
@@ -44,32 +61,38 @@ if (aboutCarousel) {
     });
   };
 
-  prevButton?.addEventListener("click", () => updateCarousel(currentSlide - 1));
-  nextButton?.addEventListener("click", () => updateCarousel(currentSlide + 1));
+  bindCarouselControl(prevButton, () => updateCarousel(currentSlide - 1));
+  bindCarouselControl(nextButton, () => updateCarousel(currentSlide + 1));
 
   dots.forEach((dot, dotIndex) => {
-    dot.addEventListener("click", () => updateCarousel(dotIndex));
+    bindCarouselControl(dot, () => updateCarousel(dotIndex));
   });
 
-  aboutCarousel.addEventListener(
-    "touchstart",
-    (event) => {
-      touchStartX = event.touches[0].clientX;
-    },
-    { passive: true }
-  );
-
-  aboutCarousel.addEventListener(
-    "touchend",
-    (event) => {
-      const touchEndX = event.changedTouches[0].clientX;
-      const swipeDistance = touchEndX - touchStartX;
-
-      if (Math.abs(swipeDistance) < 42) return;
+  aboutCarousel.addEventListener("pointerdown", (event) => {
+    if (event.pointerType === "mouse" || event.target.closest("button")) return;
+    trackingPointerId = event.pointerId;
+    pointerStartX = event.clientX;
+    pointerStartY = event.clientY;
+    didDrag = false;
+  });
+  aboutCarousel.addEventListener("pointermove", (event) => {
+    if (event.pointerId !== trackingPointerId) return;
+    if (Math.hypot(event.clientX - pointerStartX, event.clientY - pointerStartY) > 10) didDrag = true;
+  });
+  aboutCarousel.addEventListener("pointerup", (event) => {
+    if (event.pointerId !== trackingPointerId) return;
+    const swipeDistance = event.clientX - pointerStartX;
+    const verticalDistance = Math.abs(event.clientY - pointerStartY);
+    trackingPointerId = null;
+    if (didDrag && Math.abs(swipeDistance) >= 42 && Math.abs(swipeDistance) > verticalDistance) {
+      event.preventDefault();
       updateCarousel(currentSlide + (swipeDistance < 0 ? 1 : -1));
-    },
-    { passive: true }
-  );
+    }
+  });
+  aboutCarousel.addEventListener("pointercancel", () => {
+    trackingPointerId = null;
+    didDrag = false;
+  });
 
   updateCarousel(0);
 }
@@ -81,6 +104,10 @@ if (brandCarousel) {
   const prevButton = brandCarousel.querySelector(".brand-carousel-prev");
   const nextButton = brandCarousel.querySelector(".brand-carousel-next");
   const originalLogos = track ? Array.from(track.children) : [];
+  let pointerStartX = 0;
+  let pointerStartY = 0;
+  let trackingPointerId = null;
+  let suppressNextClick = false;
 
   originalLogos.forEach((logo) => {
     const clone = logo.cloneNode(true);
@@ -119,15 +146,41 @@ if (brandCarousel) {
     brandCarousel.classList.remove("is-paused");
   };
 
-  prevButton?.addEventListener("click", () => nudgeTrack(-1));
-  nextButton?.addEventListener("click", () => nudgeTrack(1));
+  bindCarouselControl(prevButton, () => nudgeTrack(-1));
+  bindCarouselControl(nextButton, () => nudgeTrack(1));
 
   brandCarousel.addEventListener("mouseenter", pause);
   brandCarousel.addEventListener("mouseleave", resume);
   brandCarousel.addEventListener("focusin", pause);
   brandCarousel.addEventListener("focusout", resume);
-  brandCarousel.addEventListener("touchstart", pause, { passive: true });
-  brandCarousel.addEventListener("touchend", resume, { passive: true });
+  brandCarousel.addEventListener("pointerdown", (event) => {
+    if (event.pointerType === "mouse" || event.target.closest("button")) return;
+    trackingPointerId = event.pointerId;
+    pointerStartX = event.clientX;
+    pointerStartY = event.clientY;
+    suppressNextClick = false;
+    pause();
+  });
+  brandCarousel.addEventListener("pointermove", (event) => {
+    if (event.pointerId !== trackingPointerId) return;
+    if (Math.hypot(event.clientX - pointerStartX, event.clientY - pointerStartY) > 10) suppressNextClick = true;
+  });
+  const finishBrandGesture = (event) => {
+    if (event.pointerId !== trackingPointerId) return;
+    trackingPointerId = null;
+    window.setTimeout(resume, 80);
+  };
+  brandCarousel.addEventListener("pointerup", finishBrandGesture);
+  brandCarousel.addEventListener("pointercancel", (event) => {
+    suppressNextClick = true;
+    finishBrandGesture(event);
+  });
+  brandCarousel.addEventListener("click", (event) => {
+    if (!suppressNextClick) return;
+    event.preventDefault();
+    event.stopPropagation();
+    suppressNextClick = false;
+  }, true);
 }
 
 document.querySelectorAll("[data-news-gallery]").forEach((gallery) => {
@@ -172,13 +225,13 @@ document.querySelectorAll("[data-news-gallery]").forEach((gallery) => {
     if (nextButton) nextButton.disabled = end >= cards.length;
   };
 
-  prevButton?.addEventListener("click", () => {
+  bindCarouselControl(prevButton, () => {
     if (currentGroup === 0) return;
     currentGroup -= 1;
     updateNewsGallery();
   });
 
-  nextButton?.addEventListener("click", () => {
+  bindCarouselControl(nextButton, () => {
     if ((currentGroup + 1) * groupSize >= cards.length) return;
     currentGroup += 1;
     updateNewsGallery();
